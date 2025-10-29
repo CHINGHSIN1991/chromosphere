@@ -22,7 +22,18 @@ export function createDropdownActions<T = any>(
       setState((prev) => {
         if (prev.isOpen) return prev;
         onChange?.(true);
-        return { ...prev, isOpen: true, highlightedIndex: prev.selectedIndex };
+        const hasItems = items.length > 0;
+        const initialHighlight =
+          prev.selectedIndex >= 0 && prev.selectedIndex < items.length
+            ? prev.selectedIndex
+            : hasItems
+            ? 0
+            : -1;
+        return {
+          ...prev,
+          isOpen: true,
+          highlightedIndex: initialHighlight,
+        };
       });
     },
 
@@ -38,10 +49,17 @@ export function createDropdownActions<T = any>(
       setState((prev) => {
         const newIsOpen = !prev.isOpen;
         onChange?.(newIsOpen);
+        const hasItems = items.length > 0;
+        const initialHighlight =
+          prev.selectedIndex >= 0 && prev.selectedIndex < items.length
+            ? prev.selectedIndex
+            : hasItems
+            ? 0
+            : -1;
         return {
           ...prev,
           isOpen: newIsOpen,
-          highlightedIndex: newIsOpen ? prev.selectedIndex : -1,
+          highlightedIndex: newIsOpen ? initialHighlight : -1,
         };
       });
     },
@@ -71,21 +89,29 @@ export function createDropdownActions<T = any>(
     },
 
     highlightNext: () => {
+      if (items.length === 0) return;
+
       setState((prev) => {
+        const currentIndex =
+          prev.highlightedIndex >= 0 && prev.highlightedIndex < items.length
+            ? prev.highlightedIndex
+            : -1;
         const nextIndex =
-          prev.highlightedIndex < items.length - 1
-            ? prev.highlightedIndex + 1
-            : 0;
+          currentIndex < items.length - 1 ? currentIndex + 1 : 0;
         return { ...prev, highlightedIndex: nextIndex };
       });
     },
 
     highlightPrevious: () => {
+      if (items.length === 0) return;
+
       setState((prev) => {
+        const currentIndex =
+          prev.highlightedIndex >= 0 && prev.highlightedIndex < items.length
+            ? prev.highlightedIndex
+            : items.length;
         const prevIndex =
-          prev.highlightedIndex > 0
-            ? prev.highlightedIndex - 1
-            : items.length - 1;
+          currentIndex > 0 ? currentIndex - 1 : items.length - 1;
         return { ...prev, highlightedIndex: prevIndex };
       });
     },
