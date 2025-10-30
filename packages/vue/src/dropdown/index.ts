@@ -5,4 +5,5 @@ export type {
   DropdownState,
   DropdownActions,
 } from '@headless-ui-lib/core';
+export type { VueDropdownReturn } from './useDropdown';
 
