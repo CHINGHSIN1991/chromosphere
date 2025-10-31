@@ -1,4 +1,4 @@
-import { ref, watch, onMounted, onUnmounted, type Ref } from 'vue';
+import { ref, watch, onMounted, onUnmounted, computed, type Ref } from 'vue';
 import {
   createModalState,
   createModalActions,
@@ -40,6 +40,8 @@ export function useModal(options: ModalOptions = {}) {
     }
   };
 
+  let previousBodyOverflow: string | null = null;
+
   // Add event listeners
   onMounted(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -49,6 +51,10 @@ export function useModal(options: ModalOptions = {}) {
   onUnmounted(() => {
     window.removeEventListener('keydown', handleKeyDown);
     document.removeEventListener('mousedown', handleOutsideClick);
+    if (previousBodyOverflow !== null) {
+      document.body.style.overflow = previousBodyOverflow;
+      previousBodyOverflow = null;
+    }
   });
 
   // Lock body scroll when modal is open
@@ -56,15 +62,21 @@ export function useModal(options: ModalOptions = {}) {
     () => state.value.isOpen,
     (isOpen) => {
       if (isOpen) {
+        previousBodyOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
       } else {
-        document.body.style.overflow = '';
+        if (previousBodyOverflow !== null) {
+          document.body.style.overflow = previousBodyOverflow;
+          previousBodyOverflow = null;
+        }
       }
     }
   );
 
+  const isOpen = computed(() => state.value.isOpen);
+
   return {
-    isOpen: state,
+    isOpen,
     modalRef,
     ...actions,
   };
