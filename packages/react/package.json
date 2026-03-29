@@ -1,0 +1,21 @@
+{
+  "name": "@chromosphere/react",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Chromosphere UI components for React",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/components/*/index.ts"
+  },
+  "scripts": {
+    "build": "echo 'TODO: configure build'",
+    "dev": "echo 'TODO: configure dev'",
+    "test": "echo 'TODO: configure test'",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
+}

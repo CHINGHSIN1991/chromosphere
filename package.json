@@ -1,0 +1,19 @@
+{
+  "name": "chromosphere",
+  "private": true,
+  "description": "Unstyled, accessible UI components for your design system. Works in React, Vue, Solid, and Svelte.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

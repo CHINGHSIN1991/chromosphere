@@ -1,0 +1,20 @@
+{
+  "name": "@chromosphere/svelte",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Chromosphere UI components for Svelte",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/components/*/index.ts"
+  },
+  "scripts": {
+    "build": "echo 'TODO: configure build'",
+    "dev": "echo 'TODO: configure dev'",
+    "test": "echo 'TODO: configure test'",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "svelte": ">=4.0.0"
+  }
+}
