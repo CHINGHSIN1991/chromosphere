@@ -35,7 +35,8 @@ import type { ComponentPropsWithoutRef } from 'react'
 // =============================================================================
 
 export interface CollapsibleContentProps extends ComponentPropsWithoutRef<'div'> {
-  // TODO: 需要額外的 props 嗎？
+  lazyMount?: boolean
+  unmountOnExit?: boolean
 }
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>(
