@@ -1,0 +1,11 @@
+// Namespace 匯出
+export { PopoverRoot as Root } from './popover-root'
+export { PopoverTrigger as Trigger } from './popover-trigger'
+export { PopoverAnchor as Anchor } from './popover-anchor'
+export { PopoverPositioner as Positioner } from './popover-positioner'
+export { PopoverContent as Content } from './popover-content'
+export { PopoverTitle as Title } from './popover-title'
+export { PopoverDescription as Description } from './popover-description'
+export { PopoverCloseTrigger as CloseTrigger } from './popover-close-trigger'
+export { PopoverArrow as Arrow } from './popover-arrow'
+export { PopoverArrowTip as ArrowTip } from './popover-arrow-tip'

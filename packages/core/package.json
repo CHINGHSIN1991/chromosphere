@@ -1,0 +1,11 @@
+{
+  "name": "@chromosphere/core",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Chromosphere Core Types - Framework-agnostic type definitions",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/components/*/types.ts"
+  }
+}
