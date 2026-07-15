@@ -1,13 +1,14 @@
 {
   "name": "chromosphere",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm -r --filter './packages/*' build",
+    "dev": "pnpm --filter playground-react dev",
+    "typecheck": "pnpm -r typecheck"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.24.0"
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
 }
